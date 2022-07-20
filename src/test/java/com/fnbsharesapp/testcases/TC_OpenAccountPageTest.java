@@ -23,8 +23,34 @@ public class TC_OpenAccountPageTest extends BaseClass {
 		
 
 		registerPage myAccpg = new registerPage(driver);
-		myAccpg.selectTitle("PROF");
-
+		//myAccpg.selectTitle("PROF");
+		
+		myAccpg.enterFirstName("Mdu");
+		logger.info("Firtname entered");
+		
+		myAccpg.enterSurname("Zulu");
+		logger.info("Surname entered");
+		
+		myAccpg.enterEmail("zuluring@gmail.com");
+		logger.info("Email entered");
+		
+		myAccpg.enterMobileNumber("0835687859");
+		logger.info("Phone entered");
+		
+		myAccpg.enterUserName("asdf");
+		logger.info("Username entered");
+		
+		myAccpg.enterPassword("pass123");
+		logger.info("Password entered");
+		
+		myAccpg.enterSAID("8912235985088");
+		logger.info("ID Number entered");
+		
+		/*
+		 * Step 4.  Select product you are interested in (Local Trading Account, 
+		 * Derivatives Trader, Global Trading Account (offshore) or all) (Choose one)
+		 */
+		myAccpg.clickAllProduct();
 		
 		//Validation
 		String saID = myAccpg.getSAID();
@@ -35,9 +61,6 @@ public class TC_OpenAccountPageTest extends BaseClass {
 			logger.info("invalid SA ID entered");
 			Assert.assertEquals("South African ID numbers are thirteen digits.",saIdErrMsg);
 		}
-		/*
-		 * Step 4.  Select product you are interested in (Local Trading Account, 
-		 * Derivatives Trader, Global Trading Account (offshore) or all) (Choose one)
-		 */
+		
 	}
 }
