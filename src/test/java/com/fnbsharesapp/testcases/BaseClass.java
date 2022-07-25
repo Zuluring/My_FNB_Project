@@ -11,6 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
@@ -37,7 +38,13 @@ public class BaseClass {
 		{
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			
+			ChromeOptions options = new ChromeOptions();
+	        options.addArguments("start-maximized");
+	        options.addArguments("disable-infobars");
+	        options.addArguments("--disable-extensions");
+	       
+			driver = new ChromeDriver(options);
 			break;
 
 		case "msedge":
@@ -60,16 +67,16 @@ public class BaseClass {
 
 		//for logging
 		logger = LogManager.getLogger("FNBSharesApp");
-		
-		//open url
-		driver.get(url);
+        
+      //open url
+      	driver.get(url);
 		logger.info("url opened");
 
 	}
 
 
 
-	@AfterClass
+	//@AfterClass
 	public void tearDown()
 	{
 		driver.close();
